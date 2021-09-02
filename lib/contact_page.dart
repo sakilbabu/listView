@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 class ContactPage extends StatelessWidget {
   final String name;
 
-  const ContactPage({Key? key, required this.name}) : super(key: key);
+  ContactPage({Key? key, required this.name}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -25,22 +25,42 @@ class ContactPage extends StatelessWidget {
         children: [
           Column(
             children: [
+              Container(
+                color: Colors.blue,
+                child: Image.asset("assets/images/girl.jpeg",
+                    height: 300,
+                    width: 500,
+                    alignment: Alignment.bottomLeft,
+                    repeat: ImageRepeat.repeatX,
+                    color: Colors.blue,
+                    colorBlendMode: BlendMode.dstATop,
+                    // fit: BoxFit.fill,
+                    errorBuilder: (BuildContext context, obj, trace) {
+                  return Column(children: [
+                    Icon(Icons.error),
+                    // Text("${trace}"),
+                    Text("${obj}"),
+                  ]);
+                }),
+              ),
               Image.network(
-                "https://scontent.fdac98-1.fna.fbcdn.net/v/t1.6435-9/171454171_914266449397687_3612128448745758074_n.jpg?_nc_cat=107&ccb=1-5&_nc_sid=09cbfe&_nc_eui2=AeEisOCjTV38LmxRo43cDyFGqBvPA9DxoOyoG88D0PGg7G4vul2A7gnCc_2e8NLXF5pmiHzN-9KcIYlUK9sEhhxI&_nc_ohc=yE-zS0rLbpkAX8vPyFj&tn=kalruT0qiA3FxEZA&_nc_ht=scontent.fdac98-1.fna&oh=bc2e597c3260a20a0e8c19b39a954b7a&oe=614F5173",
-                height: 64,
-                width: 64,
+                "https://flutter.dev/assets/images/shared/brand/flutter/logo/flutter-lockup.png",
+                height: 108,
+                width: 108,
               ),
               SizedBox(height: 5),
               Text(
                 name,
+                textDirection: TextDirection.rtl,
                 style: TextStyle(
                     fontWeight: FontWeight.bold,
                     fontSize: 15,
-                    color: Colors.white70),
+                    color: Colors.white70,
+                    decoration: TextDecoration.overline),
               ),
               SizedBox(height: 5),
               Text(
-                "Yesterday",
+                "Yesterday \u{1F602}",
                 style: TextStyle(color: Colors.black),
               ),
             ],
